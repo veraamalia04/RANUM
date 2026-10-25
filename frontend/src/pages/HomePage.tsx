@@ -201,7 +201,8 @@ function MyPortfolio({ me }: { me: User }) {
       <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
         <PortfolioUpload onSaved={reload} />
         {data && data.length > 0
-          ? <PortfolioGrid items={data.slice(0, 2)} onDeleted={reload} />
+          ? <PortfolioGrid items={data} onDeleted={reload}
+              className="flex snap-x snap-mandatory overflow-x-auto pb-2 [&>li]:w-[85%] [&>li]:shrink-0 [&>li]:snap-start sm:[&>li]:w-[calc(50%-0.5rem)]" />
           : (
             <p className="relative grid place-items-center rounded-3xl border bg-mint/40 p-5 text-center text-sm">
               <Leaf className="absolute top-3 left-4 size-5 text-primary/50" />
