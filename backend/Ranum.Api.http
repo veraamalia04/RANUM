@@ -1,0 +1,44 @@
+@host = http://localhost:5090
+
+# Demo accounts (Development only, see appsettings.Development.json): admin/admin123, guru/guru, vera/vera
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{ "username": "guru", "password": "guru" }
+
+###
+GET {{host}}/api/auth/me
+
+###
+GET {{host}}/api/avatars
+
+###
+PUT {{host}}/api/auth/me
+Content-Type: application/json
+
+{ "avatar": "fox.webp", "mood": "senang", "bio": "Suka menggambar", "birthPlace": "Bandung", "birthDate": "1990-05-10" }
+
+###
+POST {{host}}/api/users
+Content-Type: application/json
+
+{ "username": "budi", "password": "rahasia123", "role": "Siswa", "kelas": 4 }
+
+###
+GET {{host}}/api/users
+
+###
+POST {{host}}/api/challenges
+Content-Type: application/json
+
+{
+  "title": "Kuis Hewan",
+  "kelas": 4,
+  "questions": [
+    { "type": "PilihanGanda", "text": "Hewan berkaki 8?", "options": ["Semut", "Laba-laba"], "correctIndex": 1 },
+    { "type": "Essay", "text": "Ceritakan hewan favoritmu" }
+  ]
+}
+
+###
+GET {{host}}/api/challenges
